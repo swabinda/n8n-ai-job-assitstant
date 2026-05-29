@@ -1,0 +1,423 @@
+{
+  "name": "AI Job Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Resume:\n{{ $('Extract from File').item.json.text }}\n\nJob Post:\n{{ $json.job_title }}\n\nCompany Name: \n{{ $json.company_name }}\n\nJob Description:\n{{ $json.job_description }}",
+        "options": {
+          "systemMessage": "=You are an elite AI Resume Analysis and Job Application Generation Engine with deep expertise in:\nATS optimization · Executive resume writing · HR recruitment intelligence · Career coaching ·\nHiring psychology · Talent acquisition strategy · Professional business communication · Modern recruitment trends\n\nYou think simultaneously as:\n- A senior technical recruiter screening for competitive roles\n- An ATS system parsing for keyword density and structural compliance\n- A hiring manager evaluating role fit and cultural alignment\n- A career strategist maximizing the candidate's competitive positioning\n\n---\n\n## INPUT YOU WILL RECEIVE\n\n1. Candidate Resume Text\n2. Job Title\n3. Company Name\n4. Job Description\n\n---\n\n## PRIMARY OBJECTIVE\n\nAnalyze the candidate's resume against the job description and generate three outputs that\nmaximize interview chances:\n\n1. Personalized Cover Letter\n2. ATS-Optimized Resume Summary\n3. ATS Match Analysis with Score\n\nAll outputs must be:\n- Professional and human-written in tone\n- Deeply personalized to the specific company and role\n- ATS-compliant without sacrificing natural readability\n- Recruiter-grade in quality and impact\n- Honest — based only on information present in the resume\n\n---\n\n## STEP 1 — DEEP ANALYSIS PROTOCOL\n\nBefore generating any output, perform a thorough internal analysis:\n\n### Resume Analysis\nExtract and evaluate:\n- Total years of experience and seniority level\n- Core technical skills and tools\n- Soft skills and leadership indicators\n- Measurable achievements and quantified impact\n- Industry domain and functional expertise\n- Education and certifications\n- Career trajectory and progression\n\n### Job Description Analysis\nExtract and evaluate:\n- Must-have requirements vs. nice-to-have qualifications\n- Core responsibilities and expected deliverables\n- Required technologies, tools, and methodologies\n- Industry-specific terminology and ATS keywords\n- Seniority expectations and team context\n- Company culture signals and values\n\n### Gap & Alignment Analysis\nIdentify:\n- Strong keyword matches between resume and job description\n- Skills and experience directly transferable to the role\n- Missing keywords that reduce ATS score\n- Competitive advantages the candidate holds\n- Areas where the resume needs strategic framing\n\nOnly proceed to output generation after completing this analysis.\n\n---\n\n## OUTPUT 1 — COVER LETTER\n\n### Rules\n- Tailored specifically to the company name and job title provided\n- Sounds naturally human-written — never robotic or templated\n- Modern professional tone: confident, warm, and direct\n- Highlights the candidate's most relevant experience for this exact role\n- References the company or role context to show genuine interest\n- Includes quantified achievements wherever the resume supports it\n- Avoids generic filler phrases (\"I am writing to apply for...\", \"I believe I am a great fit...\")\n- Every paragraph must serve a purpose — no padding\n\n### Structure\nParagraph 1 — Strong Opening:\nHook the reader immediately. State the role, express genuine interest, and lead with one\ncompelling reason why this candidate is worth reading further.\n\nParagraph 2 — Core Value Alignment:\nConnect the candidate's top 2–3 relevant experiences or achievements directly to the\nrole's key responsibilities. Be specific. Use numbers and impact where available.\n\nParagraph 3 — Company & Role Relevance:\nDemonstrate awareness of the company or role context. Show this is not a generic application.\nReference something specific to the role or industry that makes this candidate a natural fit.\n\nParagraph 4 — Confident Close:\nExpress readiness for the next step. Thank the reader. End with professional confidence —\nnot desperation.\n\nLength: 300–450 words. No longer.\n\n### Prohibited\n- Do not invent experience, companies, or achievements not found in the resume\n- Do not use: \"I am writing to apply\", \"please find my resume attached\", \"I would be a great fit\"\n- Do not use hollow buzzwords without substance\n\n---\n\n## OUTPUT 2 — RESUME SUMMARY\n\n### Rules\n- 3 to 5 lines maximum\n- Opens with seniority level, job function, and years of experience\n- Includes the top 3–5 ATS keywords extracted from the job description\n- Highlights the candidate's strongest, most relevant skills for this role\n- Mentions measurable impact or domain expertise where resume supports it\n- Ends with a value proposition aligned to the target role\n- Reads like it was written by a professional career strategist\n- Optimized for both ATS parsing and human recruiter attention\n\n### Format\nWrite as flowing prose — not bullet points. 3–5 sentences total.\n\n---\n\n## OUTPUT 3 — ATS MATCH ANALYSIS\n\n### ATS Score (1–100)\nCalculate a realistic score based on:\n- Keyword match rate between resume and job description (35%)\n- Skills and tools alignment (25%)\n- Experience level and relevance match (20%)\n- Industry and domain fit (10%)\n- Education and certification match (10%)\n\nBe honest and calibrated. A fresher applying to a senior role should score low.\nA strong match should score 80+. Never inflate scores unrealistically.\n\n### Score Explanation\n2–3 sentences explaining what drove the score — both positively and negatively.\nBe specific, not generic.\n\n### Matching Strengths\nList 4–7 specific strengths where the resume aligns well with the job description.\nEach item must be concrete — not vague.\nExample: \"5 years of React.js experience matches the required front-end stack\"\nNot: \"Has technical skills\"\n\n### Missing Keywords\nList specific ATS keywords, tools, technologies, or qualifications present in the\njob description but absent or weak in the resume.\nBe precise — list actual terms, not categories.\n\n### Improvement Suggestions\nProvide 3–5 actionable, specific recommendations the candidate can implement to\nimprove their application and ATS score for this role.\nEach suggestion must be practical and directly tied to the job description.\n\n---\n\n## STRICT BEHAVIORAL RULES\n\n- NEVER fabricate experience, companies, skills, or achievements\n- NEVER generate misleading qualifications or inflate credentials\n- NEVER produce generic outputs — every word must reflect the specific resume and job\n- ONLY enhance, reframe, and optimize information that exists in the resume\n- If key information is missing from the resume, adapt professionally without inventing\n- Maintain recruiter-grade writing quality throughout all three outputs\n- Prioritize ATS keyword integration without making text feel keyword-stuffed\n\n---\n\n## OUTPUT FORMAT\n\nReturn ONLY a single valid JSON object. No markdown. No code blocks.\nNo explanations or text outside the JSON. No trailing commas.\n\n{\n  \"cover_letter\": \"\",\n  \"resume_summary\": \"\",\n  \"ats_analysis\": {\n    \"ats_score\": 0,\n    \"score_explanation\": \"\",\n    \"matching_strengths\": [],\n    \"missing_keywords\": [],\n    \"improvement_suggestions\": []\n  }\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        592,
+        -288
+      ],
+      "id": "af1afd05-b65c-4097-b68c-a1e104409daa",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        -32
+      ],
+      "id": "0e9efc07-ec47-4287-834f-c5e842a99211",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "308CjxiD6Jb4qK0l",
+          "name": "OpenAI account 137"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "resume_file",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        -288
+      ],
+      "id": "e9172d0c-19a4-40a3-891e-832e41ced7ee",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>AI Resume Analysis</title>\n\n  <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap\" rel=\"stylesheet\">\n\n  <style>\n    *{\n      margin:0;\n      padding:0;\n      box-sizing:border-box;\n    }\n\n    body{\n      font-family:'Inter',sans-serif;\n      background:#0f172a;\n      color:#fff;\n      padding:40px;\n      line-height:1.7;\n    }\n\n    .container{\n      max-width:1100px;\n      margin:auto;\n    }\n\n    .glass{\n      background:rgba(255,255,255,0.05);\n      backdrop-filter:blur(12px);\n      border:1px solid rgba(255,255,255,0.08);\n      border-radius:24px;\n      padding:30px;\n      margin-bottom:25px;\n      box-shadow:0 10px 30px rgba(0,0,0,0.25);\n    }\n\n    .hero{\n      text-align:center;\n      padding:50px 30px;\n      background:linear-gradient(135deg,#1e293b,#312e81,#0f172a);\n    }\n\n    .hero h1{\n      font-size:42px;\n      font-weight:800;\n      margin-bottom:12px;\n    }\n\n    .hero p{\n      color:#cbd5e1;\n      font-size:16px;\n    }\n\n    .section-title{\n      font-size:24px;\n      margin-bottom:20px;\n      font-weight:700;\n      color:#f8fafc;\n    }\n\n    .summary{\n      color:#dbeafe;\n      font-size:15px;\n    }\n\n    .cover-letter{\n      white-space:pre-line;\n      color:#e2e8f0;\n      font-size:15px;\n    }\n\n    .score-wrapper{\n      display:flex;\n      align-items:center;\n      gap:30px;\n      flex-wrap:wrap;\n    }\n\n    .score-circle{\n      width:160px;\n      height:160px;\n      border-radius:50%;\n      background:conic-gradient(#22c55e calc({{ $json.ats_analysis.ats_score }} * 1%), #1e293b 0%);\n      display:flex;\n      align-items:center;\n      justify-content:center;\n      position:relative;\n    }\n\n    .score-circle::before{\n      content:'';\n      position:absolute;\n      width:120px;\n      height:120px;\n      background:#0f172a;\n      border-radius:50%;\n    }\n\n    .score-value{\n      position:relative;\n      font-size:38px;\n      font-weight:800;\n      color:#fff;\n      z-index:2;\n    }\n\n    .score-details{\n      flex:1;\n      min-width:250px;\n    }\n\n    .score-details h3{\n      margin-bottom:10px;\n      color:#f1f5f9;\n    }\n\n    .score-details p{\n      color:#cbd5e1;\n      font-size:14px;\n    }\n\n    .grid{\n      display:grid;\n      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));\n      gap:20px;\n    }\n\n    .card{\n      background:rgba(255,255,255,0.04);\n      border:1px solid rgba(255,255,255,0.06);\n      border-radius:18px;\n      padding:22px;\n    }\n\n    .card h3{\n      margin-bottom:15px;\n      font-size:18px;\n      color:#fff;\n    }\n\n    .tag{\n      display:inline-block;\n      padding:8px 14px;\n      background:#1e293b;\n      border-radius:999px;\n      margin:6px;\n      font-size:13px;\n      color:#e2e8f0;\n    }\n\n    ul{\n      padding-left:18px;\n    }\n\n    li{\n      margin-bottom:10px;\n      color:#e2e8f0;\n      font-size:14px;\n    }\n\n    .footer{\n      text-align:center;\n      color:#94a3b8;\n      margin-top:30px;\n      font-size:13px;\n    }\n\n    @media(max-width:768px){\n\n      body{\n        padding:20px;\n      }\n\n      .hero h1{\n        font-size:30px;\n      }\n\n      .score-wrapper{\n        flex-direction:column;\n        align-items:flex-start;\n      }\n\n    }\n  </style>\n</head>\n\n<body>\n\n<div class=\"container\">\n\n  <!-- HERO -->\n  <div class=\"glass hero\">\n    <h1>AI Resume Analysis Report</h1>\n    <p>Professional ATS Optimization & Career Intelligence</p>\n  </div>\n\n  <!-- RESUME SUMMARY -->\n  <div class=\"glass\">\n    <h2 class=\"section-title\">Professional Resume Summary</h2>\n    <p class=\"summary\">\n      {{ $json.resume_summary }}\n    </p>\n  </div>\n\n  <!-- ATS SCORE -->\n  <div class=\"glass\">\n\n    <h2 class=\"section-title\">ATS Match Score</h2>\n\n    <div class=\"score-wrapper\">\n\n      <div class=\"score-circle\">\n        <div class=\"score-value\">\n          {{ $json.ats_analysis.ats_score }}%\n        </div>\n      </div>\n\n      <div class=\"score-details\">\n        <h3>Analysis Overview</h3>\n\n        <p>\n          {{ $json.ats_analysis.score_explanation }}\n        </p>\n\n      </div>\n\n    </div>\n\n  </div>\n\n  <!-- MATCHING STRENGTHS -->\n  <div class=\"glass\">\n\n    <h2 class=\"section-title\">Matching Strengths</h2>\n\n    <div>\n\n      {{\n        $json.ats_analysis.matching_strengths.map(skill =>\n          `<span class=\"tag\">${skill}</span>`\n        ).join('')\n      }}\n\n    </div>\n\n  </div>\n\n  <!-- MISSING KEYWORDS + IMPROVEMENTS -->\n  <div class=\"grid\">\n\n    <div class=\"glass card\">\n\n      <h3>Missing Keywords</h3>\n\n      <ul>\n\n        {{\n          $json.ats_analysis.missing_keywords.map(keyword =>\n            `<li>${keyword}</li>`\n          ).join('')\n        }}\n\n      </ul>\n\n    </div>\n\n    <div class=\"glass card\">\n\n      <h3>Improvement Suggestions</h3>\n\n      <ul>\n\n        {{\n          $json.ats_analysis.improvement_suggestions.map(item =>\n            `<li>${item}</li>`\n          ).join('')\n        }}\n\n      </ul>\n\n    </div>\n\n  </div>\n\n  <!-- COVER LETTER -->\n  <div class=\"glass\">\n\n    <h2 class=\"section-title\">Generated Cover Letter</h2>\n\n    <div class=\"cover-letter\">\n\n      {{ $json.cover_letter }}\n\n    </div>\n\n  </div>\n\n  <!-- FOOTER -->\n  <div class=\"footer\">\n    Generated by AI Job Application Assistant • ATS Optimized\n  </div>\n\n</div>\n\n</body>\n</html>\n"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1168,
+        -288
+      ],
+      "id": "7892ad69-d2c7-4c2c-b1cb-b3c8f11785a0",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        944,
+        -288
+      ],
+      "id": "c748233d-c207-414b-9c49-c5aa32703793",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Edit Fields1').item.json.email }}",
+        "subject": "Your AI Generated Job Application Documents",
+        "emailType": "text",
+        "message": "=Hello {{ $('Edit Fields1').item.json.full_name }},  \n\nYour personalized cover letter and resume summary are attached. \n\nPDF URL: {{ $json.pdf_url }}\n\nBest regards, \nAI Job Assistant",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1616,
+        -288
+      ],
+      "id": "90c3437b-72a2-4794-976f-3ad80d8bbe5b",
+      "name": "Send a message",
+      "webhookId": "5169b55c-4e69-440d-970f-7b78b4aa951d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "O00W2Qf1RRj3S1Wy",
+          "name": "Gmail account 618"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Ff2Bc4T7tSy517C9dEAHxINLsJrwFCUNTDkUk4ctbsM",
+          "mode": "list",
+          "cachedResultName": "AI Job Assistant",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ff2Bc4T7tSy517C9dEAHxINLsJrwFCUNTDkUk4ctbsM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ff2Bc4T7tSy517C9dEAHxINLsJrwFCUNTDkUk4ctbsM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "job title": "={{ $('Edit Fields').item.json.personal.professional_title }}",
+            "generated_at": "={{ $now.format('yyyy-MM-dd HH:mm:ss') }}",
+            "pdf_link": "={{ $('Convert HTML to PDF1').item.json.pdf_url }}",
+            "email": "={{ $('Edit Fields1').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "job title",
+              "displayName": "job title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "generated_at",
+              "displayName": "generated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pdf_link",
+              "displayName": "pdf_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2048,
+        -288
+      ],
+      "id": "e9f23a21-9ef8-4fbd-904a-64bc9b25412f",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "IwoZNtmS2e486spJ",
+          "name": "Google Sheets account 658"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html_content": "={{ $json.html }}"
+      },
+      "type": "n8n-nodes-htmlcsstopdf.htmlcsstopdf",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        -288
+      ],
+      "id": "e13173d7-065a-4754-ade0-7b32123f4ad7",
+      "name": "Convert HTML to PDF1",
+      "credentials": {
+        "htmlcsstopdfApi": {
+          "id": "fzPVHAWZ0KREmeNi",
+          "name": "HTML to PDF account 90"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "454ecc61-45bc-49a9-9a18-4dd91c787b40",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        -288
+      ],
+      "id": "9a0e93d0-1c26-427b-bb20-a30650a20ccb",
+      "name": "Webhook",
+      "webhookId": "454ecc61-45bc-49a9-9a18-4dd91c787b40"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f6ea80f-f825-43b4-8d20-b880e5739fc2",
+              "name": "full_name",
+              "value": "={{ $('Webhook').item.json.body.full_name }}",
+              "type": "string"
+            },
+            {
+              "id": "50b0deea-47db-4cc7-9197-7641eb17b709",
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "51acfd2c-c6db-421e-bb10-ae4375044d2d",
+              "name": "job_title",
+              "value": "={{ $('Webhook').item.json.body.job_title }}",
+              "type": "string"
+            },
+            {
+              "id": "781f5c7e-dc94-47eb-a417-aaa75542688d",
+              "name": "company_name",
+              "value": "={{ $('Webhook').item.json.body.company_name }}",
+              "type": "string"
+            },
+            {
+              "id": "daaf32be-51cf-4410-9081-1f85b79a35d5",
+              "name": "job_description",
+              "value": "={{ $('Webhook').item.json.body.job_description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        -288
+      ],
+      "id": "4c3413e2-1709-43f7-8939-7c97e20be8ba",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1824,
+        -288
+      ],
+      "id": "c9b74cb0-0818-4829-b13f-08d016b7347f",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Convert HTML to PDF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert HTML to PDF1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "2cb36ece-6f57-40c8-b867-5f7676b58b68",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5f00bba974abf03cb5183d4d65f8a9645a781b04770df6a7d08284fca87d50b3"
+  },
+  "id": "1ftVSreNJz1ZCWp3",
+  "tags": []
+}
